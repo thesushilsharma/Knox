@@ -26,7 +26,7 @@ export default function Footer() {
           </a>
         </p>
         <p className="text-sm">
-          © &copy; {currentYear}. All rights reserved.
+          &copy; {currentYear}. All rights reserved.
         </p>
       </div>
     </footer>

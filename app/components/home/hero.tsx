@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Hero() {
     return (
       <section className="py-20">
@@ -10,12 +12,12 @@ export default function Hero() {
             Authentication.
           </p>
           <div className="space-x-4">
-            <a
-              href="/dashboard"
+            <Link
+              to="/dashboard"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
               Get Started
-            </a>
+            </Link>
             <a
               href="https://github.com/thesushilsharma/Knox"
               target="_blank"
