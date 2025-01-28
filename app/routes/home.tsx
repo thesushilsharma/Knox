@@ -16,7 +16,7 @@ export function meta({ }: Route.MetaArgs) {
 export default function Home() {
   return (
     <Fragment>
-      <div className="bg-gray-800 grid min-h-screen grid-rows-[auto_1fr_auto]">
+      <div className="grid min-h-screen grid-rows-[auto_1fr_auto]">
         <Header />
         <main className="max-w-screen-lg mx-auto my-4">
           <Hero />

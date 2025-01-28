@@ -1,5 +1,6 @@
 // import dotenv from 'dotenv';
 // dotenv.config();
+import envSchema from "env";
 import { createCookieSessionStorage } from "react-router";
 
 type SessionData = {
@@ -15,7 +16,7 @@ const { getSession, commitSession, destroySession } =
     {
       // a Cookie from `createCookie` or the CookieOptions to create one
       cookie: {
-        name: "__session",
+        name: envSchema.appwrite.authSession,
 
         // all of these are optional
         //domain: "reactrouter.com",
@@ -36,7 +37,8 @@ const { getSession, commitSession, destroySession } =
 export { getSession, commitSession, destroySession };
 
 export const storeCookieInSession = async (sessionSecret: string) => {
-  //console.log("sessionSecret:", sessionSecret)
+  //.log("sessionSecret:", sessionSecret)
+  console.log("Storing Session Cookie")
   const session = await getSession();
   session.set("sessionSecret", sessionSecret);
   const header = await commitSession(session);
@@ -45,8 +47,15 @@ export const storeCookieInSession = async (sessionSecret: string) => {
 }
 
 export const getCookieFromSession = async (request: Request) => {
-  console.log("Checking Session")
+  console.log("Checking Session Cookie")
   const session = await getSession(request.headers.get("Cookie"));
   const sessionSecret = session.get("sessionSecret")
   return sessionSecret
 }
+
+export const destroyServerSession = async (request: Request) => {
+  console.log("Destroying Session Cookie")
+  const session = await getSession(request.headers.get("Cookie"));
+  const sessionHeader = await destroySession(session);
+  return sessionHeader;
+};
